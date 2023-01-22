@@ -14,8 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: f236727a4725ddf47b040072e8e07785
   _collectionList:
-  - uid: 
-    _model: {fileID: 0}
+  - uid: 0cb2cd5a-f945-40f4-98f8-58f8c098f0bc
+    _model: {fileID: 11400000, guid: bf5badb4fe81826478ff38a9f2e75db6, type: 2}
+  - uid: 01d8692e-9ab6-4f62-8845-ce5e101c67af
+    _model: {fileID: 11400000, guid: bf5badb4fe81826478ff38a9f2e75db6, type: 2}
+  - uid: 91ac0d36-8fd8-4e01-ace8-bf44d043faf4
+    _model: {fileID: 11400000, guid: bf5badb4fe81826478ff38a9f2e75db6, type: 2}
+  - uid: e287f288-4cb5-4173-aae5-18107f172969
+    _model: {fileID: 11400000, guid: bf5badb4fe81826478ff38a9f2e75db6, type: 2}
+  - uid: a26ba6b4-700d-429f-b8f4-95e181b0546b
+    _model: {fileID: 11400000, guid: bf5badb4fe81826478ff38a9f2e75db6, type: 2}
   OnItemAdded:
     m_PersistentCalls:
       m_Calls: []

@@ -9,7 +9,7 @@ namespace ModelInstanceCollection
     [CustomEditor(typeof(CollectionSO<>), true)]
     public class CollectionSOEditor : Editor
     {
-        public SerializableScriptableObject _debugModel;
+        public static SerializableScriptableObject _debugModel;
 
         public override void OnInspectorGUI()
         {
