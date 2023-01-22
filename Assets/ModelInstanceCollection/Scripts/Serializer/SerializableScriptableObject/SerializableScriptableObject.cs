@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using static UnityEditor.Progress;
-using System.Collections.Generic;
-using System.Reflection;
-using System.IO;
-using System.Linq;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
+
+
 #endif
 
 [JsonConverter(typeof(SerializableScriptableObjectJsonConverter))]

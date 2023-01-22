@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+
 [CustomEditor(typeof(GlobalReferencesSO))]
 public class GlobalReferencesSOEditor : Editor
 {
@@ -10,6 +11,7 @@ public class GlobalReferencesSOEditor : Editor
         if (GUILayout.Button("Fetch all serializable objects"))
         {
             FetchAllSerializableObjects();
+            GlobalReferencesSO.get.RefreshList();
         }
     }
 

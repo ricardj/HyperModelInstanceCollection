@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9b25ef62938fd4a94de3df89345c53, type: 3}
   m_Name: GlobalReferences
   m_EditorClassIdentifier: 
-  _serializableScriptables: []
+  _serializableScriptables:
+  - guid: df3eda2bb17a08a4487ed01beae51e75
+    reference: {fileID: 11400000, guid: df3eda2bb17a08a4487ed01beae51e75, type: 2}
+  - guid: 17945bf8e5e4eb343bea1ed858db13da
+    reference: {fileID: 11400000, guid: 17945bf8e5e4eb343bea1ed858db13da, type: 2}

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 
-public class CollectionSO<T> : ScriptableObject, ITypelessCollectionSO
+public class CollectionSO<T> : SerializableScriptableObject, ITypelessCollectionSO
 {
 
     [Serializable]

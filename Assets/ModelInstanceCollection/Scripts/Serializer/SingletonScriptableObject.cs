@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class SingletonScriptableObject<T> : ScriptableObject where T : SingletonScriptableObject<T>
 {
     static T instance;

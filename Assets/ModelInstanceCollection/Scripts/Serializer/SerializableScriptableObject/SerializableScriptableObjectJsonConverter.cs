@@ -4,6 +4,7 @@ using System;
 
 //using UnityEditor;
 
+
 public class SerializableScriptableObjectJsonConverter : JsonConverter<SerializableScriptableObject>
 {
     public override SerializableScriptableObject ReadJson(JsonReader reader, Type objectType, SerializableScriptableObject existingValue, bool hasExistingValue, JsonSerializer serializer)

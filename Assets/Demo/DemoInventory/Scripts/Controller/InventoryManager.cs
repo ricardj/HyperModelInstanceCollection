@@ -7,7 +7,7 @@ using static UnityEngine.Networking.UnityWebRequest;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] InstanceSerializer _instanceSerializer;
+
     [SerializeField] InventoryItemSO _itemModel2;
     [SerializeField] InventoryItemSO _itemModel;
     [SerializeField] string _result;
@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour
         _instances.Add(newItem);
         _instances.Add(newItem2);
 
-        string result = _instanceSerializer.SerializeInstance(newItem);
+        string result = InstanceSerializer.SerializeInstance(newItem);
 
         _result = result;
 
@@ -59,6 +59,6 @@ public class InventoryManager : MonoBehaviour
     private void LoadMemory()
     {
         string result = PlayerPrefs.GetString("Hello");
-        _unserializedItem = _instanceSerializer.DeserializeInstance<InventoryItem, InventoryItemSO>(result);
+        _unserializedItem = InstanceSerializer.DeserializeInstance<InventoryItem, InventoryItemSO>(result);
     }
 }

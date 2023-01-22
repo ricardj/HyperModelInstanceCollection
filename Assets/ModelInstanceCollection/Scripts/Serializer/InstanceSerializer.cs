@@ -1,22 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Newtonsoft.Json;
 
 
-using System.Reflection;
-using UnityEditor;
-
-
-public class InstanceSerializer : MonoBehaviour
+public class InstanceSerializer
 {
 
-    public string SerializeInstance<T>(T instance) where T : IInstance
+    public static string SerializeInstance<T>(T instance) where T : IInstance
     {
         string jsonString = JsonConvert.SerializeObject(instance);
         return jsonString;
     }
 
-    public TInstance DeserializeInstance<TInstance, TModel>(string serializedInstance) where TInstance : IInstance
+    public static TInstance DeserializeInstance<TInstance, TModel>(string serializedInstance) where TInstance : IInstance
     {
         TInstance instance = JsonConvert.DeserializeObject<TInstance>(serializedInstance);
         return instance;
