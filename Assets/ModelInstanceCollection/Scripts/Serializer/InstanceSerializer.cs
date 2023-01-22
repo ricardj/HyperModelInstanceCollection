@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using Newtonsoft.Json;
 
-
-public class InstanceSerializer
+namespace ModelInstanceCollection
 {
-
-    public static string SerializeInstance<T>(T instance) where T : IInstance
+    public class InstanceSerializer
     {
-        string jsonString = JsonConvert.SerializeObject(instance);
-        return jsonString;
+
+        public static string SerializeInstance<T>(T instance) where T : IInstance
+        {
+            string jsonString = JsonConvert.SerializeObject(instance);
+            return jsonString;
+        }
+
+        public static TInstance DeserializeInstance<TInstance, TModel>(string serializedInstance) where TInstance : IInstance
+        {
+            TInstance instance = JsonConvert.DeserializeObject<TInstance>(serializedInstance);
+            return instance;
+        }
+
+
     }
-
-    public static TInstance DeserializeInstance<TInstance, TModel>(string serializedInstance) where TInstance : IInstance
-    {
-        TInstance instance = JsonConvert.DeserializeObject<TInstance>(serializedInstance);
-        return instance;
-    }
-
-
 }

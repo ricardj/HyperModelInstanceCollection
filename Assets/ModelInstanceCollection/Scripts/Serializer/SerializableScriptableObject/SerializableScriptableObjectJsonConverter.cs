@@ -4,43 +4,45 @@ using System;
 
 //using UnityEditor;
 
-
-public class SerializableScriptableObjectJsonConverter : JsonConverter<SerializableScriptableObject>
+namespace ModelInstanceCollection
 {
-    public override SerializableScriptableObject ReadJson(JsonReader reader, Type objectType, SerializableScriptableObject existingValue, bool hasExistingValue, JsonSerializer serializer)
+    public class SerializableScriptableObjectJsonConverter : JsonConverter<SerializableScriptableObject>
     {
-        string guid = "";
-
-        while (reader.Read())
+        public override SerializableScriptableObject ReadJson(JsonReader reader, Type objectType, SerializableScriptableObject existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.TokenType == JsonToken.EndObject)
-            {
-                break;
-            }
+            string guid = "";
 
-            if (reader.TokenType == JsonToken.PropertyName)
+            while (reader.Read())
             {
-                if ((string)reader.Value == "GUID")
+                if (reader.TokenType == JsonToken.EndObject)
                 {
-                    reader.Read();
-                    guid = (string)reader.Value;
+                    break;
+                }
+
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    if ((string)reader.Value == "GUID")
+                    {
+                        reader.Read();
+                        guid = (string)reader.Value;
+                    }
                 }
             }
+            SerializableScriptableObject serializedScriptable = GlobalReferencesSO.get.GetScriptable(guid);
+            //string path = AssetDatabase.GUIDToAssetPath(guid);
+            //SerializableScriptableObject serializedScriptable = AssetDatabase.LoadAssetAtPath<SerializableScriptableObject>(path);
+            return serializedScriptable;
+
+
         }
-        SerializableScriptableObject serializedScriptable = GlobalReferencesSO.get.GetScriptable(guid);
-        //string path = AssetDatabase.GUIDToAssetPath(guid);
-        //SerializableScriptableObject serializedScriptable = AssetDatabase.LoadAssetAtPath<SerializableScriptableObject>(path);
-        return serializedScriptable;
 
-
-    }
-
-    public override void WriteJson(JsonWriter writer, SerializableScriptableObject value, JsonSerializer serializer)
-    {
-        writer.WriteStartObject();
-        writer.WritePropertyName("GUID");
-        writer.WriteValue(value.Guid);
-        GlobalReferencesSO.get.AddScriptable(value);
-        writer.WriteEndObject();
+        public override void WriteJson(JsonWriter writer, SerializableScriptableObject value, JsonSerializer serializer)
+        {
+            writer.WriteStartObject();
+            writer.WritePropertyName("GUID");
+            writer.WriteValue(value.Guid);
+            GlobalReferencesSO.get.AddScriptable(value);
+            writer.WriteEndObject();
+        }
     }
 }

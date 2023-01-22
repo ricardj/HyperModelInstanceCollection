@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
 
-
-public class ReadOnlyAttribute : PropertyAttribute { }
+namespace ModelInstanceCollection
+{
+    public class ReadOnlyAttribute : PropertyAttribute { }
+}

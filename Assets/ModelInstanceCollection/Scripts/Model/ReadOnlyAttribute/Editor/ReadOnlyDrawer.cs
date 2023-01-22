@@ -1,7 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
-
+namespace ModelInstanceCollection
+{
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
 public class ReadOnlyDrawer : PropertyDrawer
 {
@@ -22,4 +23,5 @@ public class ReadOnlyDrawer : PropertyDrawer
         // Setting old GUI enabled value
         GUI.enabled = previousGUIState;
     }
+}
 }

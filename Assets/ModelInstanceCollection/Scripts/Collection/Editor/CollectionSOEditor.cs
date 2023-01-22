@@ -1,7 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-
+namespace ModelInstanceCollection
+{
 [CustomEditor(typeof(ITypelessCollectionSO))]
 public class CollectionSOEditor : Editor
 {
@@ -15,4 +16,5 @@ public class CollectionSOEditor : Editor
         //{
         //}
     }
+}
 }

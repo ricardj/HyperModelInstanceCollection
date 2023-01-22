@@ -5,113 +5,115 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-
-public class CollectionSO<T> : SerializableScriptableObject, ITypelessCollectionSO
+namespace ModelInstanceCollection
 {
-
-    [Serializable]
-    public class CollectionItemEvent : UnityEvent<T> { }
-
-
-    //[SerializeReference]
-    [SerializeField]
-    List<T> _collectionList;
-
-    [Header("Events")]
-    public CollectionItemEvent OnItemAdded;
-    public CollectionItemEvent OnItemRemoved;
-    public UnityEvent OnCollectionUpdated;
-
-    public List<T> CollectionList
+    public class CollectionSO<T> : SerializableScriptableObject, ITypelessCollectionSO
     {
-        get
-        {
-            CheckNullCollectionList();
-            return _collectionList;
-        }
-        set
-        {
-            CheckNullCollectionList();
-            _collectionList = value;
-        }
-    }
+
+        [Serializable]
+        public class CollectionItemEvent : UnityEvent<T> { }
 
 
-    private void CheckNullCollectionList()
-    {
-        if (_collectionList == null)
-        {
-            _collectionList = new List<T>();
-        }
-    }
+        //[SerializeReference]
+        [SerializeField]
+        List<T> _collectionList;
 
-    public void AddItem(T item)
-    {
-        if (!CollectionList.Contains(item))
+        [Header("Events")]
+        public CollectionItemEvent OnItemAdded;
+        public CollectionItemEvent OnItemRemoved;
+        public UnityEvent OnCollectionUpdated;
+
+        public List<T> CollectionList
         {
-            CollectionList.Add(item);
-            OnItemAdded.Invoke(item);
+            get
+            {
+                CheckNullCollectionList();
+                return _collectionList;
+            }
+            set
+            {
+                CheckNullCollectionList();
+                _collectionList = value;
+            }
+        }
+
+
+        private void CheckNullCollectionList()
+        {
+            if (_collectionList == null)
+            {
+                _collectionList = new List<T>();
+            }
+        }
+
+        public void AddItem(T item)
+        {
+            if (!CollectionList.Contains(item))
+            {
+                CollectionList.Add(item);
+                OnItemAdded.Invoke(item);
+                OnCollectionUpdated.Invoke();
+            }
+        }
+
+        public void AddItem(List<T> inventorySlots)
+        {
+            CollectionList.AddRange(inventorySlots);
             OnCollectionUpdated.Invoke();
         }
-    }
 
-    public void AddItem(List<T> inventorySlots)
-    {
-        CollectionList.AddRange(inventorySlots);
-        OnCollectionUpdated.Invoke();
-    }
-
-    public void RemoveItem(T item)
-    {
-        if (CollectionList.Contains(item))
+        public void RemoveItem(T item)
         {
-            CollectionList.Remove(item);
-            OnItemRemoved.Invoke(item);
-            OnCollectionUpdated.Invoke();
+            if (CollectionList.Contains(item))
+            {
+                CollectionList.Remove(item);
+                OnItemRemoved.Invoke(item);
+                OnCollectionUpdated.Invoke();
+            }
+        }
+        public List<T> GetItems()
+        {
+            return CollectionList;
+        }
+
+        public void Clear()
+        {
+            CollectionList.Clear();
+        }
+
+        public T GetRandomItem()
+        {
+            if (CollectionList.Count > 0)
+            {
+                return CollectionList[Random.Range(0, CollectionList.Count)];
+            }
+            return default(T);
+        }
+
+        public int GetCount()
+        {
+            return CollectionList.Count;
+        }
+
+        public void SetUnique(T unique)
+        {
+            Clear();
+            AddItem(unique);
+        }
+
+        public T GetUnique()
+        {
+            if (GetCount() >= 1)
+            {
+                return CollectionList[0];
+            }
+            return default(T);
         }
     }
-    public List<T> GetItems()
+
+
+    public interface ITypelessCollectionSO
     {
-        return CollectionList;
+        int GetCount();
     }
-
-    public void Clear()
-    {
-        CollectionList.Clear();
-    }
-
-    public T GetRandomItem()
-    {
-        if (CollectionList.Count > 0)
-        {
-            return CollectionList[Random.Range(0, CollectionList.Count)];
-        }
-        return default(T);
-    }
-
-    public int GetCount()
-    {
-        return CollectionList.Count;
-    }
-
-    public void SetUnique(T unique)
-    {
-        Clear();
-        AddItem(unique);
-    }
-
-    public T GetUnique()
-    {
-        if (GetCount() >= 1)
-        {
-            return CollectionList[0];
-        }
-        return default(T);
-    }
-}
-
-
-public interface ITypelessCollectionSO
-{
-    int GetCount();
 }

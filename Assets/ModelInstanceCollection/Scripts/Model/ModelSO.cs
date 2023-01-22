@@ -1,15 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-
-public abstract class ModelSO<T> : SerializableScriptableObject
+namespace ModelInstanceCollection
 {
-    public abstract T GetInstance();
-
-    public T SetupModel(T instance) 
+    public abstract class ModelSO<T> : SerializableScriptableObject
     {
-        IInstance targetInstance = (IInstance)instance;
-        targetInstance.SetModel(this);
-        return instance;
+        public abstract T GetInstance();
+
+        public T SetupModel(T instance)
+        {
+            IInstance targetInstance = (IInstance)instance;
+            targetInstance.SetModel(this);
+            return instance;
+        }
     }
 }

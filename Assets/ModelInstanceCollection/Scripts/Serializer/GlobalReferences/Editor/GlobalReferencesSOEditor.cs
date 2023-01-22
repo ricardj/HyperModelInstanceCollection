@@ -1,7 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-
+namespace ModelInstanceCollection
+{
 [CustomEditor(typeof(GlobalReferencesSO))]
 public class GlobalReferencesSOEditor : Editor
 {
@@ -27,4 +28,5 @@ public class GlobalReferencesSOEditor : Editor
 
         }
     }
+}
 }

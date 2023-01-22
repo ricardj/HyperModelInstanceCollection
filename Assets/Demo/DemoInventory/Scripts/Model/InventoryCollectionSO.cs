@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using ModelInstanceCollection;
+using UnityEngine;
 
-namespace HyperInstanceModelCollection
+
+[CreateAssetMenu]
+public class InventoryCollectionSO : CollectionSO<InventoryItem>
 {
-    [CreateAssetMenu]
-    public class InventoryCollectionSO : CollectionSO<InventoryItem>
-    {
 
-    }
 }
+
 
 
 

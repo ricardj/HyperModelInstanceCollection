@@ -1,9 +1,9 @@
 using HyperInstanceModelCollection;
-using System;
-using System.Collections;
+using ModelInstanceCollection;
+
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
+
 
 public class InventoryManager : MonoBehaviour
 {

@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
 
-
-public class SingletonScriptableObject<T> : ScriptableObject where T : SingletonScriptableObject<T>
+namespace ModelInstanceCollection
 {
-    static T instance;
-    public static T get
+    public class SingletonScriptableObject<T> : ScriptableObject where T : SingletonScriptableObject<T>
     {
-        get
+        static T instance;
+        public static T get
         {
-            if (instance == null)
+            get
             {
-                T[] assets = Resources.LoadAll<T>("");
-                if (assets == null || assets.Length < 1)
+                if (instance == null)
                 {
-                    throw new System.Exception("Could not find any instance");
+                    T[] assets = Resources.LoadAll<T>("");
+                    if (assets == null || assets.Length < 1)
+                    {
+                        throw new System.Exception("Could not find any instance");
+                    }
+                    else if (assets.Length > 1)
+                    {
+                        Debug.LogError("Found more than 1 instance of the singleton");
+                    }
+                    instance = assets[0];
                 }
-                else if (assets.Length > 1)
-                {
-                    Debug.LogError("Found more than 1 instance of the singleton");
-                }
-                instance = assets[0];
+                return instance;
             }
-            return instance;
         }
     }
 }

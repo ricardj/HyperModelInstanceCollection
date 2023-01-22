@@ -1,8 +1,10 @@
 ﻿using System;
 
-
-public interface IInstance
+namespace ModelInstanceCollection
 {
-    public T GetModel<T>();
-    void SetModel<T>(T model);
+    public interface IInstance
+    {
+        public T GetModel<T>();
+        void SetModel<T>(T model);
+    }
 }
