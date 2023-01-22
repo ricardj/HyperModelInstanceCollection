@@ -50,6 +50,11 @@ namespace ModelInstanceCollection
 
             if (!_serializableScriptablesDictionary.ContainsKey(newSerializable.Guid))
             {
+                if (newSerializable.Guid == null)
+                {
+                    Debug.LogError("Null guid in " + newSerializable.name);
+                }
+
                 _serializableScriptablesDictionary[newSerializable.Guid] = newSerializable;
             }
 #endif

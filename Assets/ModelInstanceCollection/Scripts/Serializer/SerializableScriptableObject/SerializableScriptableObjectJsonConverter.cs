@@ -2,12 +2,13 @@
 using System;
 
 
-//using UnityEditor;
 
 namespace ModelInstanceCollection
 {
     public class SerializableScriptableObjectJsonConverter : JsonConverter<SerializableScriptableObject>
     {
+        private const string GUID_PROPERTY_NAME = "GUID";
+
         public override SerializableScriptableObject ReadJson(JsonReader reader, Type objectType, SerializableScriptableObject existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             string guid = "";
@@ -21,7 +22,7 @@ namespace ModelInstanceCollection
 
                 if (reader.TokenType == JsonToken.PropertyName)
                 {
-                    if ((string)reader.Value == "GUID")
+                    if ((string)reader.Value == GUID_PROPERTY_NAME)
                     {
                         reader.Read();
                         guid = (string)reader.Value;
@@ -29,8 +30,7 @@ namespace ModelInstanceCollection
                 }
             }
             SerializableScriptableObject serializedScriptable = GlobalReferencesSO.get.GetScriptable(guid);
-            //string path = AssetDatabase.GUIDToAssetPath(guid);
-            //SerializableScriptableObject serializedScriptable = AssetDatabase.LoadAssetAtPath<SerializableScriptableObject>(path);
+
             return serializedScriptable;
 
 
@@ -39,7 +39,7 @@ namespace ModelInstanceCollection
         public override void WriteJson(JsonWriter writer, SerializableScriptableObject value, JsonSerializer serializer)
         {
             writer.WriteStartObject();
-            writer.WritePropertyName("GUID");
+            writer.WritePropertyName(GUID_PROPERTY_NAME);
             writer.WriteValue(value.Guid);
             GlobalReferencesSO.get.AddScriptable(value);
             writer.WriteEndObject();

@@ -12,12 +12,19 @@ namespace ModelInstanceCollection
 
         public Instance()
         {
-
+            InitializeUID();
         }
 
         public Instance(T model)
         {
             _model = model;
+            InitializeUID();
+        }
+
+
+        public T GetModel()
+        {
+            return _model;
         }
 
 
@@ -26,26 +33,14 @@ namespace ModelInstanceCollection
             return (T1)(object)_model;
         }
 
-        public void SetModel<T1>(T1 model)
+        void IInstance.SetModel<T1>(T1 model)
         {
             this._model = (T)(object)model;
         }
-    }
 
-    public class IUniqueIdentified
-    {
-
-        public string uid = "0";
-        public string UID
+        IModel IInstance.GetModel()
         {
-            get
-            {
-                if (uid == "0")
-                {
-                    uid = Guid.NewGuid().ToString();
-                }
-                return uid;
-            }
+            return (IModel)_model;
         }
     }
 }

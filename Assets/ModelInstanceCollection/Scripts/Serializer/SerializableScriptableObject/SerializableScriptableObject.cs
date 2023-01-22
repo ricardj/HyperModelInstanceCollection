@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 
 #if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace ModelInstanceCollection
 {
-#endif
 
     [JsonConverter(typeof(SerializableScriptableObjectJsonConverter))]
     public class SerializableScriptableObject : ScriptableObject

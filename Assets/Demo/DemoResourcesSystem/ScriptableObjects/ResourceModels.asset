@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc08c6c906dbb4c81ec8a4b707f199, type: 3}
+  m_Name: ResourceModels
+  m_EditorClassIdentifier: 
+  _guid: 57ce8cc96b7660a48ab1cd12c1f20a9c
+  _collectionList:
+  - {fileID: 11400000, guid: bf5badb4fe81826478ff38a9f2e75db6, type: 2}
+  - {fileID: 11400000, guid: 0cbf8f4e822760341b226ae269ede703, type: 2}
+  - {fileID: 11400000, guid: 906e900ab1340544e85c68d81769b30f, type: 2}
+  OnItemAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollectionUpdated:
+    m_PersistentCalls:
+      m_Calls: []

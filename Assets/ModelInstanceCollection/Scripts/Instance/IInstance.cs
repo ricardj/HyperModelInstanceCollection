@@ -3,8 +3,10 @@
 namespace ModelInstanceCollection
 {
     public interface IInstance
-    {
-        public T GetModel<T>();
+    {        
+        public IModel GetModel();
         void SetModel<T>(T model);
     }
+
+
 }

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace ModelInstanceCollection
 {
-    public class CollectionSO<T> : SerializableScriptableObject, ITypelessCollectionSO
+    public class CollectionSO<T> : SerializableScriptableObject, ICollection
     {
 
         [Serializable]
@@ -76,10 +76,7 @@ namespace ModelInstanceCollection
             return CollectionList;
         }
 
-        public void Clear()
-        {
-            CollectionList.Clear();
-        }
+
 
         public T GetRandomItem()
         {
@@ -90,14 +87,11 @@ namespace ModelInstanceCollection
             return default(T);
         }
 
-        public int GetCount()
-        {
-            return CollectionList.Count;
-        }
+
 
         public void SetUnique(T unique)
         {
-            Clear();
+            this.Clear();
             AddItem(unique);
         }
 
@@ -109,11 +103,25 @@ namespace ModelInstanceCollection
             }
             return default(T);
         }
-    }
 
+        public void Clear()
+        {
+            CollectionList.Clear();
+        }
 
-    public interface ITypelessCollectionSO
-    {
-        int GetCount();
+        public int GetCount()
+        {
+            return CollectionList.Count;
+        }
+
+        void ICollection.AddItem<T1>(T1 item)
+        {
+            AddItem((T)(object)item);
+        }
+
+        object ICollection.GetUnique()
+        {
+            return GetUnique();
+        }
     }
 }
