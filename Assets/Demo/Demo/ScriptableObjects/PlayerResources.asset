@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f929d887306094448d08099cc27f87c, type: 3}
+  m_Name: PlayerResources
+  m_EditorClassIdentifier: 
+  _guid: 25dbbb1c73666d64888498cc9d494cc1
+  _collectionList:
+  - uid: 92bb12ef-c5cc-46e3-9297-5c4d7aeb2b31
+    _model: {fileID: 11400000, guid: 880b392e7dd671c4e841f8bbe6c4611e, type: 2}
+    amount: 0
+    name: Resource_a
+  - uid: 62c99cb8-44be-4b56-9a7f-6ab3cf60bb82
+    _model: {fileID: 11400000, guid: 880b392e7dd671c4e841f8bbe6c4611e, type: 2}
+    amount: 0
+    name: Resource_a
+  - uid: 55d3b0bf-64da-4f97-946b-154217e56750
+    _model: {fileID: 11400000, guid: 880b392e7dd671c4e841f8bbe6c4611e, type: 2}
+    amount: 0
+    name: Resource_a
+  - uid: c1dc1c3c-23c6-45fd-b78c-43d74b5c9887
+    _model: {fileID: 11400000, guid: 880b392e7dd671c4e841f8bbe6c4611e, type: 2}
+    amount: 0
+    name: Resource_a
+  - uid: a8cc48f0-4683-40a1-81ec-24ab1ab1efd8
+    _model: {fileID: 11400000, guid: 880b392e7dd671c4e841f8bbe6c4611e, type: 2}
+    amount: 0
+    name: Resource_a
+  OnItemAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollectionUpdated:
+    m_PersistentCalls:
+      m_Calls: []
