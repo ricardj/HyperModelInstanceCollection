@@ -18,17 +18,18 @@ jobs:
       - name: Building Unity Package
         uses: pCYSl5EDgo/create-unitypackage@master
         with:
-          package-path: "Package.unitypackage"
+          package-path: "ModelInstanceCollection.unitypackage"
           include-files: metaList
 
       - name: Upload package
         uses: actions/upload-artifact@v2
         with:
           name: ModelInstanceCollection
-          path: Package.unitypackage
+          path: ModelInstanceCollection.unitypackage
       - name: Publish artifact
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Package.unitypackage"
+          artifacts: "ModelInstanceCollection.unitypackage"
+          name: "ModelInstanceCollection"
           commit: "master"
           tag: "${{github.ref}}"
