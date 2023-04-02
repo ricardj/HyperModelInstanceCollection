@@ -11,16 +11,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - run: |
+        echo "Assets/ModelInstanceCollection.meta" > metaList
+        find Assets/ModelInstanceCollection/ -name \*.meta >> metaList
+
+
     - name: Set up Unity
-      uses: kuler90/setup-unity@v1
+      uses: pCYSl5EDgo/create-unitypackage@master
       with:
-        unity-version: 2021.3.19f1
-    - name: Build Unity Package
-      run: |
-        mkdir Build
-        unity -quit -batchmode -logFile Build/log.txt -projectPath . -exportPackage "Assets" "Build/Package.unitypackage"
+        package-path: 'Build/Package.unitypackage'
+        include-files: metaList
+    
     - name: Upload package
       uses: actions/upload-artifact@v2
       with:
-        name: Package
+        name: ModelInstanceCollection
         path: Build/Package.unitypackage
