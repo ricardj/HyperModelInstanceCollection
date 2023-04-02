@@ -1,0 +1,26 @@
+name: Unity Package
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build Unity Package
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Unity
+      uses: game-ci/setup-unity@v1
+      with:
+        unity-version: 2020.3.14f1
+    - name: Build Unity Package
+      run: |
+        mkdir Build
+        unity -quit -batchmode -logFile Build/log.txt -projectPath . -exportPackage "Assets" "Build/Package.unitypackage"
+    - name: Upload package
+      uses: actions/upload-artifact@v2
+      with:
+        name: Package
+        path: Build/Package.unitypackage
