@@ -8,6 +8,8 @@ jobs:
   build:
     name: Build Unity Package
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,3 +41,4 @@ jobs:
           name: "ModelInstanceCollection"
           tag: ${{steps.generate_release_tag.outputs.release_tag}}
           commit: "master"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
