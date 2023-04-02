@@ -39,6 +39,6 @@ jobs:
         with:
           artifacts: "ModelInstanceCollection.unitypackage"
           name: "ModelInstanceCollection"
-          tag: ${{steps.generate_release_tag.outputs.release_tag}}
-          commit: "master"
+          #tag: ${{steps.generate_release_tag.outputs.release_tag}}
+          tag: v1
           github_token: ${{ secrets.GITHUB_TOKEN }}
