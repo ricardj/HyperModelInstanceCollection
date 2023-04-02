@@ -15,15 +15,14 @@ jobs:
         echo "Assets/ModelInstanceCollection.meta" > metaList
         find Assets/ModelInstanceCollection/ -name \*.meta >> metaList
 
-
-    - name: Set up Unity
+    - name: Building Unity Package
       uses: pCYSl5EDgo/create-unitypackage@master
       with:
-        package-path: 'Build/Package.unitypackage'
+        package-path: 'Package.unitypackage'
         include-files: metaList
     
     - name: Upload package
       uses: actions/upload-artifact@v2
       with:
         name: ModelInstanceCollection
-        path: Build/Package.unitypackage
+        path: Package.unitypackage
