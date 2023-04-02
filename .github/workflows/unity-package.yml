@@ -32,4 +32,3 @@ jobs:
           artifacts: "ModelInstanceCollection.unitypackage"
           name: "ModelInstanceCollection"
           commit: "master"
-          tag: "${{github.ref}}"
