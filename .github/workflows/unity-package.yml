@@ -26,3 +26,7 @@ jobs:
       with:
         name: ModelInstanceCollection
         path: Package.unitypackage
+    - name: Publish artifact
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "Package.unitypackage"
