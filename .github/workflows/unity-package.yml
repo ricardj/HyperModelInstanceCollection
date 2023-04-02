@@ -12,9 +12,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Set up Unity
-      uses: game-ci/setup-unity@v1
+      uses: kuler90/setup-unity@v1
       with:
-        unity-version: 2020.3.14f1
+        unity-version: 2021.3.19f1
     - name: Build Unity Package
       run: |
         mkdir Build
